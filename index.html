@@ -26,7 +26,7 @@
 </head>
 <body>
   <header>
-    <h1>Hoe groot is jouw baby?</h1>
+    <h1>Hoe groot is een baby?</h1>
     <p>Deze site is gemaakt met als doel om mannen meer inzicht te geven in de grootte van een kind tijdens de zwangerschap. Selecteer de zwangerschapsweek en zie een herkenbare vergelijking!</p>
   </header>
 
@@ -54,7 +54,7 @@
       { "week": 7,  "lengte": "0.85", "gereedschap": "placeholder", "img": "images/week7.jpg" },
       { "week": 8,  "lengte": "1.6", "gereedschap": "placeholder", "img": "images/week8.jpg" },
       { "week": 9,  "lengte": "2.3", "gereedschap": "placeholder", "img": "images/week9.jpg" },
-      { "week": 10, "lengte": "3.1", "gereedschap": "placeholder", "img": "images/week10.jpg" },
+      { "week": 10, "lengte": "3.1", "gereedschap": "placeholder", "img": "images/week10.webp" },
       { "week": 11, "lengte": "4.1", "gereedschap": "placeholder", "img": "images/week11.jpg" },
       { "week": 12, "lengte": "5.4", "gereedschap": "placeholder", "img": "images/week12.jpg" },
       { "week": 13, "lengte": "7.4", "gereedschap": "placeholder", "img": "images/week13.jpg" },
@@ -103,7 +103,11 @@
       weekValue.textContent = week;
       const item = findWeek(week);
       if (!item) { info.textContent = 'Geen data gevonden.'; toolImage.src = ''; toolImage.alt = ''; return; }
+        if (week <= 2) {
+    info.textContent = 'In de eerste twee weken is er nog geen foetus; het lichaam bereidt zich voor op de zwangerschap.';
+        } else {
       info.textContent = `Baby is ongeveer ${item.lengte} cm lang. Vergelijkbaar met een ${item.gereedschap}.`;
+        }
       toolImage.src = item.img || '';
       toolImage.alt = item.gereedschap || '';
     }

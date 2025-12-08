@@ -56,7 +56,7 @@
       weekValue.textContent = week;
       const item = findWeek(week);
       if (!item) { info.textContent = 'Geen data gevonden.'; toolImage.src = ''; toolImage.alt = ''; return; }
-      info.textContent = `Week ${item.week}: Baby is ongeveer ${item.lengte} lang. Vergelijkbaar met een ${item.gereedschap}.`;
+      info.textContent = `Baby is ongeveer ${item.lengte} lang. Vergelijkbaar met een ${item.gereedschap}.`;
       toolImage.src = item.img || '';
       toolImage.alt = item.gereedschap || '';
     }

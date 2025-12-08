@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hoe groot is jouw baby?</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Tijdelijke basis-styling, kan later naar style.css */
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin: 2rem; text-align: center; }
+    .slider-container { margin: 2rem auto; max-width: 640px; }
+    input[type="range"] { width: 100%; }
+    .output { margin-top: 1rem; }
+    img { max-width: 180px; display: block; margin: 1rem auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hoe groot is jouw baby?</h1>
+    <p>Selecteer de zwangerschapsweek en zie de vergelijking!</p>
+  </header>
+
+  <main>
+    <div class="slider-container">
+      <input type="range" id="weekSlider" min="1" max="40" value="1" />
+      <p>Week: <span id="weekValue">1</span></p>
+    </div>
+
+    <div class="output">
+      <p id="info">Kies een week om te beginnen.</p>
+      <img id="toolImage" src="" alt="" />
+    </div>
+  </main>
+
+  <script>
+    // Kleine demo-data — vervang dit straks door fetch('data/weeks.json')
+    const data = [
+      { week: 1,  lengte: "0.1 cm", gewicht: "0.004 g", gereedschap: "schroef M3", img: "images/schroef.jpg" },
+      { week: 20, lengte: "25 cm",  gewicht: "300 g",   gereedschap: "hamer",     img: "images/hamer.jpg" }
+    ];
+
+    const slider = document.getElementById('weekSlider');
+    const weekValue = document.getElementById('weekValue');
+    const info = document.getElementById('info');
+    const toolImage = document.getElementById('toolImage');
+
+    function findWeek(week) {
+      const exact = data.find(d => d.week === week);
+      if (exact) return exact;
+      const candidates = data.filter(d => d.week <= week).sort((a,b) => b.week - a.week);
+      return candidates[0] || data[0];
+    }
+
+    function updateOutput(week) {
+      weekValue.textContent = week;
+      const item = findWeek(week);
+      if (!item) { info.textContent = 'Geen data gevonden.'; toolImage.src = ''; toolImage.alt = ''; return; }
+      info.textContent = `Week ${item.week}: Baby is ${item.lengte} lang en weegt ${item.gewicht}. Vergelijkbaar met een ${item.gereedschap}.`;
+      toolImage.src = item.img || '';
+      toolImage.alt = item.gereedschap || '';
+    }
+
+    slider.addEventListener('input', () => {
+      updateOutput(parseInt(slider.value, 10));
+    });
+
+    updateOutput(parseInt(slider.value, 10));
+  </script>
+</body>
+</html>

@@ -107,9 +107,9 @@
     info.textContent = 'In de eerste twee weken is er nog geen foetus; het lichaam bereidt zich voor op de zwangerschap.';
         } else {
       info.textContent = `Baby is ongeveer ${item.lengte} cm lang. Vergelijkbaar met een ${item.gereedschap}.`;
-        }
       toolImage.src = item.img || '';
       toolImage.alt = item.gereedschap || '';
+        }
     }
 
     slider.addEventListener('input', () => {

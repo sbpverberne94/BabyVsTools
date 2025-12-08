@@ -36,8 +36,8 @@
   <script>
     // Kleine demo-data — vervang dit straks door fetch('data/weeks.json')
     const data = [
-      { week: 1,  lengte: "0.1 cm", gewicht: "0.004 g", gereedschap: "schroef M3", img: "13_weeks.jpg" },
-      { week: 20, lengte: "25 cm",  gewicht: "300 g",   gereedschap: "hamer",     img: "images/hamer.jpg" }
+      { week: 1,  lengte: "0.1 cm", gereedschap: "schroef M3", img: "13_weeks.jpg" },
+      { week: 20, lengte: "25 cm",   gereedschap: "hamer",     img: "images/hamer.jpg" }
     ];
 
     const slider = document.getElementById('weekSlider');
@@ -56,7 +56,7 @@
       weekValue.textContent = week;
       const item = findWeek(week);
       if (!item) { info.textContent = 'Geen data gevonden.'; toolImage.src = ''; toolImage.alt = ''; return; }
-      info.textContent = `Week ${item.week}: Baby is ${item.lengte} lang en weegt ${item.gewicht}. Vergelijkbaar met een ${item.gereedschap}.`;
+      info.textContent = `Week ${item.week}: Baby is ongeveer ${item.lengte} lang. Vergelijkbaar met een ${item.gereedschap}.`;
       toolImage.src = item.img || '';
       toolImage.alt = item.gereedschap || '';
     }

@@ -45,9 +45,9 @@
   <script>
     // Kleine demo-data — vervang dit straks door fetch('data/weeks.json')
     const data = [
-     { "week": 1,  "lengte": "0", "gereedschap": "placeholder", "img": "images/week1.jpg" },
-      { "week": 2,  "lengte": "0", "gereedschap": "placeholder", "img": "images/week2.jpg" },
-      { "week": 3,  "lengte": "0.02", "gereedschap": "placeholder", "img": "images/week3.jpg" },
+     { "week": 1,  "lengte": "0", "gereedschap": "placeholder", "img": "images/week1.png" },
+      { "week": 2,  "lengte": "0", "gereedschap": "placeholder", "img": "images/week1.png" },
+      { "week": 3,  "lengte": "0.02", "gereedschap": "fijn zaagsel", "img": "images/week3.jpg" },
       { "week": 4,  "lengte": "0.15", "gereedschap": "placeholder", "img": "images/week4.jpg" },
       { "week": 5,  "lengte": "0.25", "gereedschap": "placeholder", "img": "images/week5.jpg" },
       { "week": 6,  "lengte": "0.5", "gereedschap": "placeholder", "img": "images/week6.jpg" },
@@ -59,16 +59,16 @@
       { "week": 12, "lengte": "5.4", "gereedschap": "placeholder", "img": "images/week12.jpg" },
       { "week": 13, "lengte": "7.4", "gereedschap": "Rolmaat (3m)", "img": "images/week13.jpg" },
       { "week": 14, "lengte": "14", "gereedschap": "placeholder", "img": "images/week14.jpg" },
-      { "week": 15, "lengte": "16", "gereedschap": "placeholder", "img": "images/week15.jpg" },
+      { "week": 15, "lengte": "16", "gereedschap": "Leatherman Wave+", "img": "images/week15.jpg" },
       { "week": 16, "lengte": "18", "gereedschap": "Multimeter", "img": "images/week16.jpg" },
       { "week": 17, "lengte": "20", "gereedschap": "placeholder", "img": "images/week17.jpg" },
-      { "week": 18, "lengte": "22", "gereedschap": "placeholder", "img": "images/week18.jpg" },
+      { "week": 18, "lengte": "22", "gereedschap": "een grote bus WD-40", "img": "images/week18.jpg" },
       { "week": 19, "lengte": "24", "gereedschap": "placeholder", "img": "images/week19.jpg" },
       { "week": 20, "lengte": "25.5", "gereedschap": "KNIPEX Cobra 250mm", "img": "images/week20.jpg" },
       { "week": 21, "lengte": "27", "gereedschap": "placeholder", "img": "images/week21.jpg" },
       { "week": 22, "lengte": "28", "gereedschap": "placeholder", "img": "images/week22.jpg" },
       { "week": 23, "lengte": "29", "gereedschap": "placeholder", "img": "images/week23.jpg" },
-      { "week": 24, "lengte": "30", "gereedschap": "placeholder", "img": "images/week24.jpg" },
+      { "week": 24, "lengte": "30", "gereedschap": "grote klauwhamer", "img": "images/week24.webp" },
       { "week": 25, "lengte": "34", "gereedschap": "haakse slijper", "img": "images/week25.webp" },
       { "week": 26, "lengte": "35", "gereedschap": "Bahco kapzaag", "img": "images/week26.png" },
       { "week": 27, "lengte": "36", "gereedschap": "placeholder", "img": "images/week27.jpg" },
@@ -104,7 +104,7 @@
       const item = findWeek(week);
       if (!item) { info.textContent = 'Geen data gevonden.'; toolImage.src = ''; toolImage.alt = ''; return; }
         if (week <= 2) {
-    info.textContent = 'In de eerste twee weken is er nog geen foetus; het lichaam bereidt zich voor op de zwangerschap.';
+    info.textContent = 'In de eerste twee weken is er nog geen foetus omdat de bevruchting pas na een week of twee plaatsvindt. Het lichaam bereidt zich voor op de zwangerschap.';
         } else {
       info.textContent = `Baby is ongeveer ${item.lengte} cm lang. Vergelijkbaar met een ${item.gereedschap}.`;
       toolImage.src = item.img || '';

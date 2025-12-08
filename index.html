@@ -106,10 +106,9 @@
         if (week <= 2) {
     info.textContent = 'In de eerste twee weken is er nog geen foetus omdat de bevruchting pas na een week of twee plaatsvindt. Het lichaam bereidt zich voor op de zwangerschap.';
         } else {
-      info.textContent = `Baby is ongeveer ${item.lengte} cm lang. Vergelijkbaar met een ${item.gereedschap}.`;
+      info.textContent = `Baby is ongeveer ${item.lengte} cm lang. Vergelijkbaar met een ${item.gereedschap}.`;}
       toolImage.src = item.img || '';
       toolImage.alt = item.gereedschap || '';
-        }
     }
 
     slider.addEventListener('input', () => {

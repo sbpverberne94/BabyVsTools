@@ -12,13 +12,22 @@
     .slider-container { margin: 2rem auto; max-width: 640px; }
     input[type="range"] { width: 100%; }
     .output { margin-top: 1rem; }
-    img { max-width: 180px; display: block; margin: 1rem auto; }
+   img {
+    width: 220px;       /* vaste breedte */
+    height: 220px;      /* vaste hoogte */
+    object-fit: contain; /* behoud verhoudingen, geen vervorming */
+    display: block;
+    margin: 1rem auto;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* optioneel: achtergrond voor transparante delen */
+}
+
   </style>
 </head>
 <body>
   <header>
     <h1>Hoe groot is jouw baby?</h1>
-    <p>Selecteer de zwangerschapsweek en zie de vergelijking!</p>
+    <p>Deze site is gemaakt met als doel om mannen meer inzicht te geven in de grootte van een kind tijdens de zwangerschap. Selecteer de zwangerschapsweek en zie een herkenbare vergelijking!</p>
   </header>
 
   <main>

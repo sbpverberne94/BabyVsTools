@@ -58,7 +58,7 @@
       
       <div class="week-navigation">
         <button id="prevWeek" aria-label="Vorige week">◀</button>
-        <span id="weekValue">14</span>
+        <span>Week: <span id="weekValue">14</span></span>
         <button id="nextWeek" aria-label="Volgende week">▶</button>
       </div>
 
@@ -119,6 +119,9 @@
     const weekValue = document.getElementById('weekValue');
     const info = document.getElementById('info');
     const toolImage = document.getElementById('toolImage');
+    const prevBtn = document.getElementById('prevWeek');
+    const nextBtn = document.getElementById('nextWeek');
+
 
     function findWeek(week) {
       const exact = data.find(d => d.week === week);
@@ -141,6 +144,24 @@
 
     slider.addEventListener('input', () => {
       updateOutput(parseInt(slider.value, 10));
+    });
+
+    
+    prevBtn.addEventListener('click', () => {
+      let current = parseInt(slider.value, 10); // huidige waarde van de slider
+      if (current > parseInt(slider.min, 10)) { // check: niet onder minimum
+        slider.value = current - 1; // verlaag met 1
+        updateOutput(current - 1); // update de tekst en afbeelding
+      }
+    });
+    
+        
+    nextBtn.addEventListener('click', () => {
+      let current = parseInt(slider.value, 10);
+      if (current < parseInt(slider.max, 10)) { // check: niet boven maximum
+        slider.value = current + 1; // verhoog met 1
+        updateOutput(current + 1);
+      }
     });
 
     updateOutput(parseInt(slider.value, 10));

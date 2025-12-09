@@ -49,7 +49,7 @@
 <body>
   <header>
     <h1>Hoe groot is een baby?</h1>
-    <p>Deze site is gemaakt met als doel om mannen meer inzicht te geven in de grootte van een kind tijdens de zwangerschap. Selecteer de zwangerschapsweek en zie een herkenbare vergelijking!</p>
+    <p>Deze site is bedoeld om mannen meer inzicht te geven in de grootte van een kind tijdens de zwangerschap. Selecteer de zwangerschapsweek en zie een herkenbare vergelijking!</p>
   </header>
 
   <main>
@@ -61,7 +61,6 @@
         <span>Week: <span id="weekValue">14</span></span>
         <button id="nextWeek" aria-label="Volgende week">▶</button>
       </div>
-
     </div>
 
     <div class="output">
@@ -101,14 +100,14 @@
       { "week": 26, "lengte": "35", "gereedschap": "Bahco Superior kapzaag", "img": "images/week26.png" },
       { "week": 27, "lengte": "36", "gereedschap": "kruissleutel", "img": "images/week27.jpg" },
       { "week": 28, "lengte": "37", "gereedschap": "placeholder", "img": "images/week28.jpg" },
-      { "week": 29, "lengte": "38", "gereedschap": "Makita DGA513Z Accu-haakse slijper 18V", "img": "images/week29.jpg" },
-      { "week": 30, "lengte": "39", "gereedschap": "placeholder", "img": "images/week30.jpg" },
-      { "week": 31, "lengte": "40", "gereedschap": "placeholder", "img": "images/week31.jpg" },
+      { "week": 29, "lengte": "38", "gereedschap": "Makita DGA513Z haakse slijper 18V", "img": "images/week29.jpg" },
+      { "week": 30, "lengte": "39", "gereedschap": "Bosch GBH 2-28 F Professional boorhamer", "img": "images/week30.jpg" },
+      { "week": 31, "lengte": "40", "gereedschap": "placeholder", "img": "images/week31.webp" },
       { "week": 32, "lengte": "42.5", "gereedschap": "placeholder", "img": "images/week32.jpg" },
       { "week": 33, "lengte": "44", "gereedschap": "placeholder", "img": "images/week33.jpg" },
       { "week": 34, "lengte": "45", "gereedschap": "placeholder", "img": "images/week34.jpg" },
       { "week": 35, "lengte": "46", "gereedschap": "placeholder", "img": "images/week35.jpg" },
-      { "week": 36, "lengte": "47", "gereedschap": "placeholder", "img": "images/week36.jpg" },
+      { "week": 36, "lengte": "47", "gereedschap": "middelgrote betonschaar", "img": "images/week36.jpg" },
       { "week": 37, "lengte": "48.5", "gereedschap": "placeholder", "img": "images/week37.jpg" },
       { "week": 38, "lengte": "49.5", "gereedschap": "placeholder", "img": "images/week38.jpg" },
       { "week": 39, "lengte": "50", "gereedschap": "placeholder", "img": "images/week39.jpg" },
@@ -145,7 +144,6 @@
     slider.addEventListener('input', () => {
       updateOutput(parseInt(slider.value, 10));
     });
-
     
     prevBtn.addEventListener('click', () => {
       let current = parseInt(slider.value, 10); // huidige waarde van de slider
@@ -153,9 +151,7 @@
         slider.value = current - 1; // verlaag met 1
         updateOutput(current - 1); // update de tekst en afbeelding
       }
-    });
-    
-        
+    });        
     nextBtn.addEventListener('click', () => {
       let current = parseInt(slider.value, 10);
       if (current < parseInt(slider.max, 10)) { // check: niet boven maximum

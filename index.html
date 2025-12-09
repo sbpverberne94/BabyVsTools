@@ -16,6 +16,24 @@
     .slider-container { margin: 2rem auto; max-width: 640px; }
     input[type="range"] { width: 100%; }
     .output { margin-top: 1rem; }
+    
+    week-navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.5rem;
+    }
+    .week-navigation button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+    }
+    .week-navigation button:hover {
+      color: #007acc; /* optioneel: hoverkleur */
+    }
    img {
     width: 350px;       /* vaste breedte */
     height: 350px;      /* vaste hoogte */
@@ -37,7 +55,13 @@
   <main>
     <div class="slider-container">
       <input type="range" id="weekSlider" min="1" max="40" value="14" />
-      <p>Week: <span id="weekValue">1</span></p>
+      
+      <div class="week-navigation">
+        <button id="prevWeek" aria-label="Vorige week">◀</button>
+        <span id="weekValue">14</span>
+        <button id="nextWeek" aria-label="Volgende week">▶</button>
+      </div>
+
     </div>
 
     <div class="output">

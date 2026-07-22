@@ -22,19 +22,6 @@ body{
 
 header{ max-width:640px; margin:0 auto 2.25rem; }
 
-.eyebrow{
-  display:inline-block;
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.75rem;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  color:var(--navy);
-  background:#E4EEF1;
-  padding:0.3rem 0.7rem;
-  border-radius:4px;
-  margin-bottom:0.9rem;
-}
-
 h1{
   font-family:'Space Grotesk',sans-serif;
   font-weight:700;

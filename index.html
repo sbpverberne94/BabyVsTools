@@ -1,103 +1,59 @@
-
 <!doctype html>
 <html lang="nl">
-
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JM9D92TDBL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-JM9D92TDBL');
-</script>
-
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JM9D92TDBL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JM9D92TDBL');
+  </script>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hoe groot is een baby?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Tijdelijke basis-styling, kan later naar style.css */
-    header h1 {
-      font-size: 1.8rem;
-      white-space: nowrap; /* voorkomt afbreken */
-      margin-top: 0.0rem;
-      }
-    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin: 2rem; text-align: center; }
-    
-    .slider-container { 
-      margin: 2rem auto; 
-      max-width: 640px; 
-      margin-bottom: 0.5rem;
-    }
-      
-    input[type="range"] 
-    { width: 100%; }
-    
-    .output { 
-      margin-top: 0.5rem; 
-    }
-    
-    .week-navigation {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .week-navigation button {
-      background: none;
-      border: none;
-      font-size: 2.5rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      color: #333;
-    }
-    .week-navigation button:hover {
-      color: #007acc; /* optioneel: hoverkleur */
-    }
-   img {
-    width: 350px;       /* vaste breedte */
-    height: 350px;      /* vaste hoogte */
-    object-fit: contain; /* behoud verhoudingen, geen vervorming */
-    display: block;
-    margin: 1rem auto;
-    border-radius: 8px;
-    background-color: #f9f9f9; /* optioneel: achtergrond voor transparante delen */
-}
-
-  </style>
 </head>
 <body>
   <header>
+    <span class="eyebrow">Week 1 t/m 40</span>
     <h1>Hoe groot is een baby?</h1>
-    <p>De grootte van fruitsoorten spreekt bij veel mannen niet tot de verbeelding. Dat maakt het moeilijk een goede indruk te krijgen van de groei van een kind tijdens de zwangerschap. Selecteer hieronder een zwangerschapsweek voor een herkenbare vergelijking!</p>
+    <p>De grootte van fruitsoorten spreekt bij veel mannen niet tot de verbeelding. Dat maakt het moeilijk een goede indruk te krijgen van de groei van een kind tijdens de zwangerschap. Schuif hieronder naar een zwangerschapsweek voor een herkenbare vergelijking.</p>
   </header>
 
   <main>
     <div class="slider-container">
-      <input type="range" id="weekSlider" min="1" max="40" value="20" />
-      
+      <div class="tape-track">
+        <input type="range" id="weekSlider" min="1" max="40" value="20" step="1" />
+      </div>
       <div class="week-navigation">
         <button id="prevWeek" aria-label="Vorige week">◀</button>
-        <span>Week: <span id="weekValue">20</span></span>
+        <span>Week <strong id="weekValue">20</strong> / 40</span>
         <button id="nextWeek" aria-label="Volgende week">▶</button>
       </div>
     </div>
 
     <div class="output">
+      <div class="spec-row">
+        <span class="label">Zwangerschapsweek</span>
+        <span class="value" id="weekValue2">20</span>
+      </div>
       <p id="info">Kies een week om te beginnen.</p>
-      <img id="toolImage" src="" alt="" />
-      <p id="extraText">Vragen of suggesties? Mail naar hoegrootiseenbaby@gmail.com</p>
+      <div class="image-frame">
+        <img id="toolImage" src="" alt="" />
+      </div>
     </div>
+
+    <p id="extraText">Vragen of suggesties? Mail naar hoegrootiseenbaby@gmail.com</p>
   </main>
 
   <script>
-    // Kleine demo-data — vervang dit straks door fetch('data/weeks.json')
     const data = [
-     { "week": 1,  "lengte": "0", "gereedschap": "placeholder", "img": "images/week1.png" },
+      { "week": 1,  "lengte": "0", "gereedschap": "placeholder", "img": "images/week1.png" },
       { "week": 2,  "lengte": "0", "gereedschap": "placeholder", "img": "images/week1.png" },
       { "week": 3,  "lengte": "0.02", "gereedschap": "de dikte van een vel huismerk schuurpapier korrel 80", "img": "images/week3.webp" },
       { "week": 4,  "lengte": "0.15", "gereedschap": "de vertanding van een middelfijne Dozuki Japanse trekzaag (17tpi)", "img": "images/week4.jpg" },
@@ -141,46 +97,60 @@
 
     const slider = document.getElementById('weekSlider');
     const weekValue = document.getElementById('weekValue');
+    const weekValue2 = document.getElementById('weekValue2');
     const info = document.getElementById('info');
     const toolImage = document.getElementById('toolImage');
     const prevBtn = document.getElementById('prevWeek');
     const nextBtn = document.getElementById('nextWeek');
 
-
     function findWeek(week) {
       const exact = data.find(d => d.week === week);
       if (exact) return exact;
-      const candidates = data.filter(d => d.week <= week).sort((a,b) => b.week - a.week);
+      const candidates = data.filter(d => d.week <= week).sort((a, b) => b.week - a.week);
       return candidates[0] || data[0];
     }
 
     function updateOutput(week) {
       weekValue.textContent = week;
+      weekValue2.textContent = week;
       const item = findWeek(week);
-      if (!item) { info.textContent = 'Geen data gevonden.'; toolImage.src = ''; toolImage.alt = ''; return; }
-        if (week <= 2) {
-    info.textContent = 'In de eerste twee weken is er nog geen foetus omdat de bevruchting pas na een week of twee plaatsvindt. Het lichaam bereidt zich voor op de zwangerschap.';
-        } else {
-      info.textContent = `Baby is ongeveer ${item.lengte} cm lang. Vergelijkbaar met ${item.gereedschap}.`;}
-      toolImage.src = item.img || '';
+      if (!item) {
+        info.textContent = 'Geen data gevonden.';
+        toolImage.src = '';
+        toolImage.alt = '';
+        return;
+      }
+      if (week <= 2) {
+        info.textContent = 'In de eerste twee weken is er nog geen foetus omdat de bevruchting pas na een week of twee plaatsvindt. Het lichaam bereidt zich voor op de zwangerschap.';
+      } else {
+        info.textContent = `Baby is ongeveer ${item.lengte} cm lang. Vergelijkbaar met ${item.gereedschap}.`;
+      }
       toolImage.alt = item.gereedschap || '';
+      toolImage.onerror = function () {
+        this.onerror = null;
+        this.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280"><rect width="100%" height="100%" fill="%23FAF9F5"/><text x="50%" y="50%" font-family="sans-serif" font-size="14" fill="%23aaa" text-anchor="middle">(afbeelding ontbreekt)</text></svg>'
+        );
+      };
+      toolImage.src = item.img || '';
     }
 
     slider.addEventListener('input', () => {
       updateOutput(parseInt(slider.value, 10));
     });
-    
+
     prevBtn.addEventListener('click', () => {
-      let current = parseInt(slider.value, 10); // huidige waarde van de slider
-      if (current > parseInt(slider.min, 10)) { // check: niet onder minimum
-        slider.value = current - 1; // verlaag met 1
-        updateOutput(current - 1); // update de tekst en afbeelding
+      let current = parseInt(slider.value, 10);
+      if (current > parseInt(slider.min, 10)) {
+        slider.value = current - 1;
+        updateOutput(current - 1);
       }
-    });        
+    });
+
     nextBtn.addEventListener('click', () => {
       let current = parseInt(slider.value, 10);
-      if (current < parseInt(slider.max, 10)) { // check: niet boven maximum
-        slider.value = current + 1; // verhoog met 1
+      if (current < parseInt(slider.max, 10)) {
+        slider.value = current + 1;
         updateOutput(current + 1);
       }
     });

@@ -28,6 +28,7 @@
   <main>
     <div class="slider-container">
       <div class="tape-track">
+        <div class="ticks" id="ticks"></div>
         <input type="range" id="weekSlider" min="1" max="40" value="20" step="1" />
       </div>
       <div class="week-navigation">
@@ -102,6 +103,15 @@
     const toolImage = document.getElementById('toolImage');
     const prevBtn = document.getElementById('prevWeek');
     const nextBtn = document.getElementById('nextWeek');
+    const ticksEl = document.getElementById('ticks');
+
+    const minWeek = parseInt(slider.min, 10);
+    const maxWeek = parseInt(slider.max, 10);
+    for (let w = minWeek; w <= maxWeek; w++) {
+      const tick = document.createElement('span');
+      tick.className = 'tick' + (w % 5 === 0 ? ' major' : '');
+      ticksEl.appendChild(tick);
+    }
 
     function findWeek(week) {
       const exact = data.find(d => d.week === week);

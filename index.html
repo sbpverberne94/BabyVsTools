@@ -128,7 +128,8 @@
         );
       };
       toolImage.src = item.img || '';
-      toolLink.href = item.gereedschap ? bolSearchUrl(item.gereedschap) : '#';
+      // toolLink.href = item.gereedschap ? bolSearchUrl(item.gereedschap) : '#';
+      toolLink.href = '#';
       preload(week - 1);
       preload(week + 1);
     }

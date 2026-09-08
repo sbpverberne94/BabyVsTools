@@ -134,6 +134,11 @@
       preload(week + 1);
     }
 
+    // Block clicks. Temporary. Can be removed once links are desired
+      toolLink.addEventListener('click', (e) => {
+      e.preventDefault();
+    });
+
     function preload(week) {
       if (week < minWeek || week > maxWeek) return;
       const item = findWeek(week);
